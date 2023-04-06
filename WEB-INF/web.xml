@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+  http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+  version="3.0" metadata-complete="true">
+
+  <display-name>AdministradorCalendario</display-name>
+  <description>Mapeo y definicion de Servlets</description>
+  
+  <welcome-file-list>
+    <welcome-file>
+      <!--\Vistas\Usuarios\Login.jsp-->
+      usuarios/ServicioAutenticacion
+    </welcome-file>
+  </welcome-file-list>
+  
+  <context-param>
+    <param-name>UsuarioBD</param-name>
+    <param-value>root</param-value>
+    
+    <param-name>PasswordBD</param-name>
+    <param-value>Rub3nF10r35_MySQL</param-value>
+    
+    <param-name>UrlBD</param-name>
+    <param-value>jdbc:mysql://127.0.0.1:3306/AdministradorCalendario</param-value>
+  </context-param>
+  
+  <servlet>
+    <servlet-name>ServicioAutenticacion</servlet-name>
+    <servlet-class>com.administradorcalendario.www.usuarios.servicios.ServicioAutenticacion</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ServicioAutenticacion</servlet-name>
+    <url-pattern>/usuarios/ServicioAutenticacion</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ServicioLogout</servlet-name>
+    <servlet-class>com.administradorcalendario.www.usuarios.servicios.ServicioLogout</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ServicioLogout</servlet-name>
+    <url-pattern>/usuarios/Logout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ServicioRegistrarEvento</servlet-name>
+    <servlet-class>com.administradorcalendario.www.eventos.servicios.ServicioRegistrarEvento</servlet-class>
+    
+    <!--Esto es importante-->
+    <init-param>
+      <param-name>lblEventoAgregado</param-name>
+      <param-value>Evento Registrado Exitosamente</param-value>
+    </init-param>
+    <!--Esto es importante-->
+    
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ServicioRegistrarEvento</servlet-name>
+    <url-pattern>/eventos/ServicioRegistrarEvento</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ServicioEliminarEvento</servlet-name>
+    <servlet-class>com.administradorcalendario.www.eventos.servicios.ServicioEliminarEvento</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ServicioEliminarEvento</servlet-name>
+    <url-pattern>/eventos/ServicioEliminarEvento</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ServicioConsultarEvento</servlet-name>
+    <servlet-class>com.administradorcalendario.www.eventos.servicios.ServicioConsultarEvento</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ServicioConsultarEvento</servlet-name>
+    <url-pattern>/eventos/ServicioConsultarEvento</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ServicioModificarEvento</servlet-name>
+    <servlet-class>com.administradorcalendario.www.eventos.servicios.ServicioModificarEvento</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+    <servlet-name>ServicioModificarEvento</servlet-name>
+    <url-pattern>/eventos/ServicioModificarEvento</url-pattern>
+  </servlet-mapping>
+    
+</web-app>
